@@ -1,4 +1,4 @@
-\chapter*{Programming concepts}
+\chapter{Programming concepts}
 \begin{center}
     \textit{A programming paradigm is a way of conceptualizing what it means to perform
     computation, and how tasks that are to be carried out on a computer should be structured
@@ -7,14 +7,14 @@
 
 A program has two components data and algorithms.
 
-\begin{list}{paradigm}{0.5cm}
+\begin{description}
     \item[Imperative paradigm:] Also know as algorithmic paradigm, think C. No classes, references to memory, sequentiel running of program/algorithm.
     \item[Procedural paradigm:] Same as Imperative except it's more modular, meaning code is easily reusable. 
     \item[Declarative paradig:] Computer finds the solution to a problem, think SQL. The data is "permanent".
     \item[Functional paradigm:] Based on mathematical functions. Data is immutable (Underlying structure cannot be changed). Java allows for lambda functions which allows for creating functional programming.
     \item[Logic paradigm:] Set the goal and specify the problem, to make the computer solve the problem, instead of writing an algorithm for finding said solution.
     \item[Object-oriented par:] Objects contains the data and algorithms. Where data is the state of the object. The algorithms allows to change the state of an object. Objects are often described as classes in programming. Think Java, C\# etc.
-\end{list}
+\end{description}
 \clearpage
 \section*{Polymorphism}
 \subsection*{Overloading Polymorphism}
@@ -45,10 +45,10 @@ When a type is implicitly converted.
     \end{lstlisting}
 \end{figure}
 
-\subsection*{Inclusion Polymorphism}
+\subsection*{Inclusion Polymorphism}\label{sec:inclusion_polymorphism}
 Subtype, meaning a type/class that extends or implements a type/class can also be assigned to it's parent type. Think employee extends person can also be assigned to a variable with type person.
 \clearpage
-\subsection*{Parametric Polymorphism}
+\subsection*{Parametric Polymorphism}\label{sec:parametric_polymorphism}
 Lets classes and algorithms be generic without type specification
 \begin{figure}[h!]
     \begin{lstlisting}[language=Java]
@@ -63,3 +63,33 @@ Lets classes and algorithms be generic without type specification
     }
     \end{lstlisting}
 \end{figure}
+Two conflicting imports can be used directly as such:
+\begin{lstlisting}[language=Java]
+    package pkg;
+    import p1.A;
+    import p2.A; // A compile-time error
+    class Test {
+        A var1; // Which A to use p1.A or p2.A?
+        A var2; // Which A to use p1.A or p2.A?
+    }
+\end{lstlisting}
+The alternative is stating it directly when declaring the type:
+\begin{lstlisting}[language=Java]
+    // Test.java
+    package pkg;
+    class Test {
+        p1.A var1; // Use p1.A
+        p2.A var2; // Use p2.A
+    }
+\end{lstlisting}
+Or:
+\begin{lstlisting}[language=Java]
+    // Test.java
+    package pkg;
+    import p1.A;
+    class Test {
+        A var1; // Refers to p1.A
+        p2.A var2; // Uses the fully qualified name p2.A
+    }
+\end{lstlisting}
+jav

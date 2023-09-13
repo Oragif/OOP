@@ -1,6 +1,27 @@
 % !TeX root = main.tex
 \documentclass[11pt,a4paper]{report}
 \input{preamble.tex}
+\author{Mikkel Helsing Andersen}
+\title{Object Oriented Programming notes}
+
 \begin{document}
+    %%%%%%%%%%%%%%%%%%%%
+    %  Document setup
+    %%%%%%%%%%%%%%%%%%%%
+    \pagestyle{fancy}
+    \maketitle
+    \tableofcontents\label{toc}
+    \fancyhead{} % resets header
+    \fancyhead[L]{OOP notes}
+    \fancyhead[C]{\textbf{Mikkel Helsing Andersen}}
+    \fancyhead[R]{AAU - DAT 3}
+    \fancyfoot{} % resets footer
+    \fancyfoot[L]{\hyperref[toc]{Table of Contents}}
+    \fancyfoot[R]{\thepage}
+
+    %%%%%%%%%%%%%%%%%%%%
+    %     Content
+    %%%%%%%%%%%%%%%%%%%%
     \input{chapters/concepts/page.tex}
+    \input{chapters/class/page.tex}
 \end{document}
