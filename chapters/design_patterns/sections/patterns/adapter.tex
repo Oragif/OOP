@@ -1,0 +1,54 @@
+\section{Adapter Pattern}
+Adapts a class to conform to another class by creating a middleman layer that adapts it.
+\subsection{Object adapter}
+\begin{lstlisting}
+interface RectInterface {
+    void aboutMe();
+}
+
+class Rectangle implements RectInterface {
+    ....
+    @Override
+    public void aboutMe() {
+        System.out.println("I got 4 corners")
+    }
+}
+
+interface TriInterface {
+    void aboutTriangle();
+}
+
+class Triangle implements TriInterface {
+    ....
+    @Override
+    public void aboutTriangle() {
+        System.out.println("I got 3 corners")
+    }
+}
+
+// Adapt triangle to conform to Rectangle
+class Adapter implements RectInterface {
+    private Triangle triangle;
+
+    public Adapter(Triangle triangle) {
+        this.triangle = triangle;
+    }
+
+    @Override
+    public void aboutMe() {
+        this.triangle.aboutTriangle();
+    }
+}
+\end{lstlisting}
+
+\subsection{Class adapter}
+\begin{lstlisting}
+// See the code above for context only adapter changes
+// Adapt triangle to conform to Rectangle
+class Adapter extends Triangle implements RectInterface {
+    @Override
+    public void aboutMe() {
+        this.aboutTriangle();
+    }
+}
+\end{lstlisting}

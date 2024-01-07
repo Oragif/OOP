@@ -1,0 +1,56 @@
+\section{Composite Pattern}
+Composite pattern allows the client to handle objects the same, whether they are leafs or nodes. Meaning a leaf can have no children, whereas nodes (Composites) can have children of the same interface. Both leaf and nodes implements the same interface, for cohesive interaction for the client. Composite pattern follows a tree structure.
+
+\begin{lstlisting}
+interface Tool {
+    private List<Tool> tools;
+    private String name;
+    public String getName();
+    public int getToolCount();
+    public void addTool(Tool tool);
+}
+
+class Screwdriver implements Tool {
+    {
+        name = "Screwdriver";
+    }
+
+    @Override 
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getToolCount() {
+        new Exception("A Screwdriver can't hold other tools");
+    }
+
+    @Override
+    public void addTool(Tool tool) {
+        new Exception("A Screwdriver can't hold other tools");
+    }
+}
+
+class ToolBox implements Tool {
+    {
+        name = "Tool Box";
+        tools = new List<Tool>();
+    }
+
+    @Override 
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getToolCount() {
+        return this.tools.length();
+    }
+
+    @Override
+    public void addTool(Tool tool) {
+        this.tools.append(tool);
+    }
+}
+
+\end{lstlisting}

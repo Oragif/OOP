@@ -1,0 +1,23 @@
+\section{Template Method Pattern}
+Used to allow customisation of an algorithm within subclasses. The base class sets up the skeleton of an algorithm, but gives some of the responsibility to the subclasses.
+
+\begin{lstlisting}
+abstract class LinearSearch() {
+    public int search(List<int> list, int searchFor) {
+        for (int i = 0; i < list.length(); i++) {
+            if (this.compare(list[i], searchFor)) return i;
+        }
+    }
+
+    public abstract boolean compare(int a, int b);
+}
+
+class SimpleSearch extends LinearSearch {
+    @Override
+    public boolean compare(int a, int b) {
+        if (a == b) return true;
+        return false;
+    }
+}
+
+\end{lstlisting}

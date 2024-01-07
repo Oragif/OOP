@@ -1,0 +1,58 @@
+\section{Decorator Pattern}
+Dynamically add responsibilities to an object using composition. The decorator has the same interface as the decorated object, meaning it has the same interaction from the client perspective.
+
+\begin{lstlisting}
+abstract class Home {
+    public double basePrice;
+    public double additionalCost;
+    
+    public Home() {
+        this.basePrice = 100000.0;
+        this.additionalCost = 0.0;
+    }
+
+    public abstract double getPrice();
+}
+
+class BasicHome extends Home {
+    @Override
+    public double getPrice() {
+        return this.basePrice;
+    }
+}
+
+// Abstract class for creating decorators
+abstact class Luxury extends Home {
+    protected Home home;
+    public double luxuryCost;
+
+    public Luxury(Home home) {
+        this.home = home;
+    }
+
+    @Override
+    public double getPrice() {
+        return this.home.getPrice();
+    }
+}
+
+// Decorator
+class SwimmingPool extends Luxury {
+    public SwimmingPool(Home home) {
+        super(home);
+        this.luxuryCost = 20000;
+    }
+
+    @Override
+    public double getPrice() {
+        return this.home.getPrice() + this.luxuryCost;
+    }
+}
+
+// Usage
+Home home = new BasicHome;
+home.getPrice() // Now 100000
+// Add decorator to home
+home = SwimmingPool(home);
+home.getPrice() // Now 120000
+\end{lstlisting}

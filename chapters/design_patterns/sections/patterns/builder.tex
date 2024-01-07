@@ -1,0 +1,43 @@
+\clearpage
+\section{Builder Pattern}
+\begin{lstlisting}
+// Instantiating class at the beginning
+public class Course {
+    ...
+    public static class CourseBuilder {
+        private Course c;
+        public CourseBuilder() {
+            c = new Course();
+        }
+        public void setCode(String code); {
+            c.code = code;
+        }
+        public void setTitle(String title) {
+            c.title = title;
+        }
+        public Course getCourse() {
+            return c;
+        }
+    }
+}
+
+// Using rigged constructor
+public class Course {
+    ...
+    public static class CourseBuilder {
+        private String ccode, ctitle;
+        public CourseBuilder() { }
+        public void setCode(String code) {
+            ccode = code;
+        }
+        public void setTitle(String title) {
+            ctitle = title;
+        }
+        public Course getCourse() {
+            return new Course(ccode, ctitle);
+        }
+    }
+}
+
+
+\end{lstlisting}
